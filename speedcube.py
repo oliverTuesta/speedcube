@@ -1,17 +1,21 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# #### import pandas as pd
-# import numpy as np
-# import matplotlib.pyplot as plt
+# In[28]:
 
-# In[189]:
+
+import pandas as pd
+import numpy as np 
+import matplotlib.pyplot as plt
+
+
+# In[29]:
 
 
 data = pd.read_json('data/times.json')['session1'].values
 
 
-# In[190]:
+# In[30]:
 
 
 # get only the times
@@ -26,7 +30,7 @@ for l in data:
 times = np.array(times)
 
 
-# In[191]:
+# In[31]:
 
 
 # Calculate the 10th and 90th percentile thresholds to filter the times
@@ -37,7 +41,7 @@ filtered_times = times[(times[:,1] > lower_threshold) & (times[:,1] < upper_thre
 lower_threshold, upper_threshold
 
 
-# In[192]:
+# In[32]:
 
 
 y = times[:, 1]
@@ -52,7 +56,7 @@ t0, t1 = lin1.intercept_[0], lin1.coef_[0][0]
 t0, t1
 
 
-# In[193]:
+# In[33]:
 
 
 # plot the graph using matplotlib
@@ -60,11 +64,11 @@ plt.scatter(X, y, s=5)
 plt.xlabel('Index')
 plt.ylabel('Time')
 plt.title('Time vs Index')
-plt.plot(x, t0 + t1*x, "b")
+plt.plot(X, t0 + t1*X, "b")
 plt.show()
 
 
-# In[194]:
+# In[34]:
 
 
 # Machine learning to predict my average in certain number of solves
@@ -75,7 +79,7 @@ X_new = [[1000]]
 print(model.predict(X_new))
 
 
-# In[195]:
+# In[35]:
 
 
 y = filtered_times[:, 1]
@@ -94,15 +98,14 @@ plt.scatter(X, y, s=5)
 plt.xlabel('Index')
 plt.ylabel('Filtered Time')
 plt.title('Filtered Time vs Index')
-plt.plot(x, t0 + t1*x, "b")
+plt.plot(X, t0 + t1*X, "b")
 plt.show()
 
 
-# In[197]:
+# In[36]:
 
 
 # Machine learning to predict my average in certain number of solves
-import sklearn.linear_model
 model = sklearn.linear_model.LinearRegression()
 model.fit(Xsample, ysample)
 X_new = [[200]]
