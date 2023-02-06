@@ -68,7 +68,7 @@ def predict_average_time(model, num_solves):
 
 # Streamlit App
 st.title("Rubik's Cube Solving Time Predictor")
-st.write("This app predicts the time it will take you to solve the Rubik's cube with a certain number of practices using a linear regression model.")
+st.write("This app predicts the time it will take me (Oliver Tuesta) to solve the Rubik's cube with a certain number of practices using a linear regression model.")
 
 if st.checkbox("Show raw times"):
     st.write(times)
