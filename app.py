@@ -74,7 +74,7 @@ st.title("Rubik's Cube Solving Time Predictor")
 st.write("This app predicts the time it will take me (Oliver Tuesta) to solve the Rubik's cube with a certain number of practices using a linear regression model.")
 
 
-st.write("To train the model, I used {} the times of a session of solving the Rubik's cube. The data was collected using a timer app on my laptop. The data was then cleaned by removing the outliers (10th and 90th percentile).".format(len(times)))
+st.write("To train the model, I used {} the times of a session of solving the Rubik's cube. The data was collected using a [csTimer](cstimer.net). The data was then cleaned by removing the outliers (10th and 90th percentile).".format(len(times)))
 
 st.write("The times of the session are shown below.")
 st.write(times)
