@@ -81,7 +81,7 @@ st.write(times)
 st.write("The times after removing the outliers are shown below.")
 st.write(filtered_times)
 
-model = linear_regression(times)
+model = linear_regression(filtered_times, filtered=True)
 
 
 st.write("Linear regression model coefficients are shown below.")
