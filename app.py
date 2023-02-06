@@ -70,30 +70,30 @@ def predict_average_time(model, num_solves):
 st.title("Rubik's Cube Solving Time Predictor")
 st.write("This app predicts the time it will take me (Oliver Tuesta) to solve the Rubik's cube with a certain number of practices using a linear regression model.")
 
-if st.checkbox("Show raw times"):
-    st.write(times)
 
-if st.checkbox("Show filtered times"):
-    st.write(filtered_times)
+st.write("To train the model, I used {} the times of a session of solving the Rubik's cube. The data was collected using a timer app on my laptop. The data was then cleaned by removing the outliers (10th and 90th percentile).".format(len(times)))
+
+st.write("The times of the session are shown below.")
+st.write(times)
+st.write("The times after removing the outliers are shown below.")
+st.write(filtered_times)
 
 model = linear_regression(times)
 
-if st.checkbox("Show linear regression model"):
-    st.write(model)
 
-if st.checkbox("Show linear regression model coefficients"):
-    st.write(model.intercept_, model.coef_)
+st.write("Linear regression model coefficients are shown below.")
+st.write(model.intercept_, model.coef_)
 
-if st.checkbox("Show time vs index plot"):
-    plot_time_vs_index(times)
-    st.pyplot()
+st.subheader("Time vs Index")
+plot_time_vs_index(times)
+st.pyplot()
 
-if st.checkbox("Show filtered time vs index plot"):
-    plot_time_vs_index(times, filtered=True)
-    st.pyplot()
+st.subheader("Filtered Time vs Index")
+plot_time_vs_index(times, filtered=True)
+st.pyplot()
 
 num_solves = st.number_input("Number of solves", min_value=1, max_value=1000, value=1)
 prediction = predict_average_time(model, num_solves)
-st.write("The average time it will take you to solve the Rubik's cube with {} solves is {} seconds.".format(num_solves, prediction[0][0]))
+st.write("The average time it will take me to solve the Rubik's cube with {} solves is {} seconds.".format(num_solves, prediction[0][0]))
 
-st.write("This app was created by Oliver Tuesta")
+st.write("This app was created by [Oliver Tuesta](https://twitter.com/Oliver_Tuesta). The code can be found on [GitHub](https://github.com/oliverTuesta/speedcube).")
