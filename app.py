@@ -4,6 +4,9 @@ import streamlit as st
 import matplotlib.pyplot as plt
 from sklearn import linear_model
 
+# hide the warnings
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 @st.cache
 def load_data():
     data = pd.read_json('data/times.json')['session1'].values
