@@ -33,7 +33,7 @@ def linear_regression(times, filtered=False):
         y = times[:, 1]
         X = times[:, 0]
 
-    model = sklearn.linear_model.LinearRegression()
+    model = linear_model.LinearRegression()
     Xsample = np.c_[X]
     ysample = np.c_[y]
     model.fit(Xsample, ysample)
